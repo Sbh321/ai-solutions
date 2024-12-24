@@ -12,11 +12,33 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
 
 Route::get('/about', function () {
     return Inertia::render('About/index');
-})->name('about');
+})->name('about')->name('about');
+
+Route::get('/services', function () {
+    return Inertia::render('Services/index');
+})->name('about')->name('services');
+
+Route::get('/events', function () {
+    return Inertia::render('Events/index');
+})->name('about')->name('events');
+
+Route::get('/blogs', function () {
+    return Inertia::render('Blogs/index');
+})->name('about')->name('blogs');
+
+Route::get('/blogs/{id}', function ($id) {
+    return Inertia::render('Blogs/BlogDetails', [
+        'id' => $id,
+    ]);
+})->name('blogs.details');
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact/index');
+})->name('about')->name('contact');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

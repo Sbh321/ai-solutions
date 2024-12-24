@@ -9,7 +9,7 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
 
 <template>
     <!-- Navigation Menu -->
-    <nav class="bg-[#F4F7FF] shadow-md">
+    <nav class="h-full bg-[#F4F7FF] shadow-md">
         <div
             class="container mx-auto flex h-full items-center justify-between px-4"
         >
@@ -23,7 +23,7 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
                 /></Link>
             </div>
             <!-- Links -->
-            <div class="hidden h-full items-center space-x-4 md:flex">
+            <div class="hidden h-16 items-center space-x-4 md:flex">
                 <Link
                     href="/"
                     class="flex h-full items-center px-4 text-gray-700 hover:text-gray-900"
@@ -43,7 +43,7 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
                     About Us
                 </Link>
                 <Link
-                    href="#"
+                    href="/services"
                     class="flex h-full items-center px-4 text-gray-700 hover:text-gray-900"
                     :class="{
                         'border-b-2 border-gray-900': route === '/services',
@@ -52,7 +52,7 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
                     Services
                 </Link>
                 <Link
-                    href="#"
+                    href="/events"
                     class="flex h-full items-center px-4 text-gray-700 hover:text-gray-900"
                     :class="{
                         'border-b-2 border-gray-900': route === '/events',
@@ -61,7 +61,7 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
                     Events
                 </Link>
                 <Link
-                    href="#"
+                    href="/blogs"
                     class="flex h-full items-center px-4 text-gray-700 hover:text-gray-900"
                     :class="{
                         'border-b-2 border-gray-900': route === '/blogs',
@@ -73,7 +73,7 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
             <!-- Contact Button -->
             <div class="hidden py-2 md:block">
                 <Link
-                    href="#"
+                    href="/contact"
                     class="rounded-lg bg-gray-700 px-4 py-2 text-white hover:bg-gray-800"
                 >
                     Contact Us
@@ -110,31 +110,31 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
                 Home
             </Link>
             <Link
-                href="#"
+                href="/about"
                 class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
             >
                 About Us
             </Link>
             <Link
-                href="#"
+                href="/services"
                 class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
             >
                 Services
             </Link>
             <Link
-                href="#"
+                href="/events"
                 class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
             >
                 Events
             </Link>
             <Link
-                href="#"
+                href="/blogs"
                 class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
             >
                 Blogs
             </Link>
             <Link
-                href="#"
+                href="/contact"
                 class="mt-2 w-full rounded bg-gray-700 px-4 py-2 text-white hover:bg-gray-800"
             >
                 Contact Us

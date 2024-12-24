@@ -25,23 +25,27 @@
                 <h3 class="mb-2 text-lg font-semibold">Menu</h3>
                 <ul class="space-y-1">
                     <li class="text-[#C9C9C9]">
-                        <a href="#home" class="hover:text-gray-300">Home</a>
+                        <Link href="/" class="hover:text-gray-300">Home</Link>
                     </li>
                     <li class="text-[#C9C9C9]">
-                        <a href="#about" class="hover:text-gray-300"
-                            >About Us</a
-                        >
+                        <Link href="/about" class="hover:text-gray-300">
+                            About Us
+                        </Link>
                     </li>
                     <li class="text-[#C9C9C9]">
-                        <a href="#services" class="hover:text-gray-300"
-                            >Services</a
-                        >
+                        <Link href="/services" class="hover:text-gray-300"
+                            >Services
+                        </Link>
                     </li>
                     <li class="text-[#C9C9C9]">
-                        <a href="#events" class="hover:text-gray-300">Events</a>
+                        <Link href="/events" class="hover:text-gray-300">
+                            Events
+                        </Link>
                     </li>
                     <li class="text-[#C9C9C9]">
-                        <a href="#blogs" class="hover:text-gray-300">Blogs</a>
+                        <Link href="/blogs" class="hover:text-gray-300">
+                            Blogs
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -50,12 +54,12 @@
             <div class="flex flex-col items-start">
                 <h3 class="mb-2 text-lg font-semibold">Contact Us</h3>
                 <p class="mb-4 text-[#C9C9C9]">Reach Out Today</p>
-                <a
-                    href="#contact"
+                <Link
+                    href="/contact"
                     class="rounded bg-gray-600 px-4 py-2 text-white hover:bg-gray-500"
                 >
                     CONTACT US
-                </a>
+                </Link>
             </div>
         </div>
 
@@ -66,4 +70,6 @@
     </footer>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Link } from '@inertiajs/vue3';
+</script>

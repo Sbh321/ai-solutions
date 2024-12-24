@@ -3,7 +3,7 @@ import EventCard from '@/Components/Pages/Events/EventCard.vue';
 import FocusCard from '@/Components/Pages/Focus/FocusCard.vue';
 import TestimonialsCard from '@/Components/Pages/Testimonials/TestimonialsCard.vue';
 import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 // Define the types for the props
@@ -82,17 +82,19 @@ const nextTestimonial = () => {
                     <p class="max-w-[800px] text-center text-6xl font-bold">
                         Revolutionizing Technology, One Solution at a Time.
                     </p>
-                    <button
-                        class="rounded-xl bg-gray-700 px-8 py-2 text-white hover:bg-gray-800"
-                    >
-                        Discover
-                    </button>
+                    <a href="#about">
+                        <button
+                            class="rounded-xl bg-gray-700 px-8 py-2 text-white hover:bg-gray-800"
+                        >
+                            Discover
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
 
         <!-- About Section -->
-        <div class="bg-[#F4F7FF]">
+        <div class="bg-[#F4F7FF]" id="about">
             <div class="container py-20">
                 <div class="md:flex">
                     <div class="w-1/2">
@@ -152,18 +154,6 @@ const nextTestimonial = () => {
                             title: 'Digital Employee Experience',
                             image: '/images/temp/focus_3.png',
                         },
-                        {
-                            title: 'Digital Employee Experience',
-                            image: '/images/temp/focus_4.png',
-                        },
-                        {
-                            title: 'Digital Employee Experience',
-                            image: '/images/temp/focus_5.png',
-                        },
-                        {
-                            title: 'Digital Employee Experience',
-                            image: '/images/temp/focus_6.png',
-                        },
                     ]"
                     :card="card"
                     :key="card.title"
@@ -209,11 +199,13 @@ const nextTestimonial = () => {
             </div>
 
             <div class="mt-4 flex w-full justify-center">
-                <button
-                    class="mt-4 rounded-lg border border-gray-700 px-4 py-2 text-gray-700 transition duration-300 ease-in-out hover:bg-gray-700 hover:text-white"
+                <Link href="/events">
+                    <button
+                        class="mt-4 rounded-lg border border-gray-700 px-4 py-2 text-gray-700 transition duration-300 ease-in-out hover:bg-gray-700 hover:text-white"
+                    >
+                        View All Events
+                    </button></Link
                 >
-                    View All Events
-                </button>
             </div>
         </div>
 
@@ -327,5 +319,9 @@ const nextTestimonial = () => {
         transform: translateX(100%);
         opacity: 0;
     }
+}
+
+html {
+    scroll-behavior: smooth;
 }
 </style>

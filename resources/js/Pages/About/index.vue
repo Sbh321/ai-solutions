@@ -1,5 +1,7 @@
 <template>
     <DefaultLayoutVue>
+        <Head title="About" />
+
         <!-- Intro Section -->
         <div class="flex h-screen flex-col">
             <!-- Hero Section -->
@@ -25,7 +27,9 @@
             <div class="container py-20">
                 <div class="md:flex">
                     <div class="w-1/2">
-                        <p class="mb-8 text-4xl font-bold">About Us</p>
+                        <p class="mb-8 text-4xl font-bold">
+                            Innovating Workplaces, One Solution at a Time
+                        </p>
 
                         <p class="text-[#626262]">
                             AI-Solutions, based in Sunderland, transforms the
@@ -60,26 +64,30 @@
         <div class="container py-20">
             <div class="md:flex">
                 <div class="flex w-1/2 items-center justify-center">
-                    <img src="/images/about.png" alt="" class="max-w-[500px]" />
+                    <img
+                        src="/images/about-2.png"
+                        alt=""
+                        class="max-w-[500px]"
+                    />
                 </div>
-                <div class="w-1/2">
-                    <ul class="mb-4 list-inside list-disc text-[#626262]">
-                        <li>
+                <div class="flex w-1/2 items-center justify-center">
+                    <ul class="list-inside list-disc text-[#626262]">
+                        <li class="mb-4">
                             <span class="font-bold">Who We Are:</span>
                             A Sunderland-based start-up transforming digital
                             workplaces with AI-driven solutions.
                         </li>
-                        <li>
+                        <li class="mb-4">
                             <span class="font-bold">What we do:</span>
                             Deliver innovative tools to enhance employee
                             experiences and productivity.
                         </li>
-                        <li>
+                        <li class="mb-4">
                             <span class="font-bold">Our Unique Edge:</span>
                             An AI-powered virtual assistant offering real-time
                             support and affordable prototyping solutions.
                         </li>
-                        <li>
+                        <li class="mb-4">
                             <span class="font-bold">Our mission:</span>
                             Innovate, promote, and deliver the future of the
                             digital employee experience.
@@ -98,4 +106,5 @@
 
 <script setup lang="ts">
 import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
+import { Head } from '@inertiajs/vue3';
 </script>
