@@ -4,7 +4,9 @@
         <main class="flex-grow">
             <slot />
         </main>
-        <div class="chat-bot">
+        <div
+            class="chat-bot cursor-pointer rounded-full border-2 border-black bg-white p-4 shadow-lg"
+        >
             <img src="/icons/Bot.svg" alt="Chat Bot" />
         </div>
         <Footer />
@@ -24,8 +26,7 @@ import Header from '@/Components/Pages/Layouts/Header.vue';
     z-index: 50;
 }
 .chat-bot img {
-    width: 75px;
-    height: 75px;
-    cursor: pointer;
+    width: 50px;
+    height: 50px;
 }
 </style>
