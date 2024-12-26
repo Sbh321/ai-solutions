@@ -6,9 +6,9 @@
             <!-- Logo Section -->
             <div class="flex flex-col items-start">
                 <img
-                    src="/images/NewLogo.jpg"
+                    src="/images/Logo.png"
                     alt="AI Solutions Logo"
-                    class="mb-4 h-auto w-40 rounded-full"
+                    class="mb-4 h-auto w-40"
                 />
             </div>
 

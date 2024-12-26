@@ -17,9 +17,9 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
             <div class="flex flex-col items-center py-2">
                 <Link href="/"
                     ><img
-                        src="/images/NewLogo.jpg"
+                        src="/images/Logo.png"
                         alt="AI Solutions Logo"
-                        class="h-14 rounded-full"
+                        class="h-14"
                 /></Link>
             </div>
             <!-- Links -->
