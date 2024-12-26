@@ -142,3 +142,11 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
         </div>
     </nav>
 </template>
+
+<style scoped>
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+</style>
