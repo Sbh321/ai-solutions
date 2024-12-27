@@ -79,12 +79,14 @@ const nextTestimonial = () => {
                 <div
                     class="absolute inset-0 flex flex-col items-center justify-center gap-14"
                 >
-                    <p class="max-w-[800px] text-center text-6xl font-bold">
+                    <p
+                        class="max-w-[800px] text-center text-6xl font-bold text-[#00133D]"
+                    >
                         Revolutionizing Technology, One Solution at a Time.
                     </p>
                     <a href="#about">
                         <button
-                            class="rounded-xl bg-gray-700 px-8 py-2 text-white hover:bg-gray-800"
+                            class="rounded-xl bg-[#00133D] px-8 py-2 text-white hover:bg-gray-800"
                         >
                             Discover
                         </button>
@@ -96,7 +98,7 @@ const nextTestimonial = () => {
         <!-- About Section -->
         <div class="bg-[#F4F7FF]" id="about">
             <div class="container py-20">
-                <div class="md:flex">
+                <div class="items-center md:flex">
                     <div class="w-1/2">
                         <p class="mb-8 text-4xl font-bold">About Us</p>
 
@@ -118,11 +120,13 @@ const nextTestimonial = () => {
                             </li>
                         </ul>
 
-                        <button
-                            class="mt-4 rounded-lg border border-gray-700 px-4 py-2 text-gray-700 transition duration-300 ease-in-out hover:bg-gray-700 hover:text-white"
+                        <Link href="/about">
+                            <button
+                                class="mt-4 rounded-lg border border-gray-700 px-4 py-2 text-gray-700 transition duration-300 ease-in-out hover:bg-gray-700 hover:text-white"
+                            >
+                                Learn More
+                            </button></Link
                         >
-                            Learn More
-                        </button>
                     </div>
                     <div class="flex w-1/2 items-center justify-center">
                         <img

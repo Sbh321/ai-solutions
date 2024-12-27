@@ -16,7 +16,9 @@
                 <div
                     class="absolute inset-0 flex flex-col items-center justify-center gap-14"
                 >
-                    <p class="max-w-[800px] text-center text-6xl font-bold">
+                    <p
+                        class="max-w-[800px] text-center text-6xl font-bold text-[#00133D]"
+                    >
                         Blogs and Photo Gallery
                     </p>
                 </div>

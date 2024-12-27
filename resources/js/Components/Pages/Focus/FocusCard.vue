@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Link } from '@inertiajs/vue3';
 import { defineProps } from 'vue';
 
 // Define the type for the `card` prop
@@ -21,7 +22,9 @@ defineProps<{
             class="h-[260px] w-full rounded-lg object-cover"
         />
         <p class="mt-8 text-center text-lg font-semibold">
-            {{ card.title }}
+            <Link href="/services/1" class="cursor-pointer hover:underline">
+                {{ card.title }}
+            </Link>
         </p>
     </div>
 </template>

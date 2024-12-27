@@ -74,7 +74,7 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
             <div class="hidden py-2 md:block">
                 <Link
                     href="/contact"
-                    class="rounded-lg bg-gray-700 px-4 py-2 text-white hover:bg-gray-800"
+                    class="rounded-lg bg-[#00133D] px-4 py-2 text-white hover:bg-gray-800"
                 >
                     Contact Us
                 </Link>
@@ -135,7 +135,7 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
             </Link>
             <Link
                 href="/contact"
-                class="mt-2 w-full rounded bg-gray-700 px-4 py-2 text-white hover:bg-gray-800"
+                class="mt-2 w-full rounded bg-[#00133D] px-4 py-2 text-white hover:bg-gray-800"
             >
                 Contact Us
             </Link>

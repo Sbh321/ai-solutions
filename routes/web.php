@@ -22,6 +22,12 @@ Route::get('/services', function () {
     return Inertia::render('Services/index');
 })->name('about')->name('services');
 
+Route::get('/services/{id}', function ($id) {
+    return Inertia::render('Services/ServiceDetails', [
+        'id' => $id,
+    ]);
+})->name('services.details');
+
 Route::get('/events', function () {
     return Inertia::render('Events/index');
 })->name('about')->name('events');
