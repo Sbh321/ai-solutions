@@ -1,6 +1,6 @@
 <template>
     <DefaultLayoutVue>
-        <Head title="Blogs Details" />
+        <Head title="Blog Details" />
 
         <div class="container py-20">
             <p class="mb-8 text-4xl font-bold">AI at Workplace</p>
