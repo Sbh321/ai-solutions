@@ -1,7 +1,7 @@
 import '../css/app.css';
 import './bootstrap';
 
-import { createInertiaApp, router } from '@inertiajs/vue3';
+import { createInertiaApp } from '@inertiajs/vue3';
 import { ClientJS } from 'clientjs';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, DefineComponent, h } from 'vue';
@@ -17,12 +17,12 @@ createInertiaApp({
             import.meta.glob<DefineComponent>('./Pages/**/*.vue'),
         ),
     setup({ el, App, props, plugin }) {
-        // Prevent visiting the same page
-        router.on('before', (event) => {
-            if (window.location.pathname === event.detail.visit.url.pathname) {
-                event.preventDefault();
-            }
-        });
+        // Prevent visiting the same page (Does not work like in case of login)
+        // router.on('before', (event) => {
+        //     if (window.location.pathname === event.detail.visit.url.pathname) {
+        //         event.preventDefault();
+        //     }
+        // });
 
         // Logic to generate and store device fingerprint
         const fingerprintKey = 'device_fingerprint';
