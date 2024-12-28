@@ -93,20 +93,23 @@ onMounted(async () => {
                 </Link>
             </div>
             <!-- Contact Button -->
-            <div class="hidden items-center gap-4 py-2 md:flex">
+            <div class="relative hidden py-2 md:block">
                 <Link
-                    href="/contact"
-                    class="rounded-lg bg-[#00133D] px-4 py-2 text-white hover:bg-gray-800"
+                    href="/login"
+                    v-if="showAdminIcon"
+                    class="absolute -left-16 -top-1"
                 >
-                    Contact Us
-                </Link>
-
-                <Link href="/login" v-if="showAdminIcon">
                     <img
                         src="/icons/Admin.svg"
                         alt=""
                         class="h-12 w-12 cursor-pointer text-gray-800"
                     />
+                </Link>
+                <Link
+                    href="/contact"
+                    class="rounded-lg bg-[#00133D] px-4 py-2 text-white hover:bg-gray-800"
+                >
+                    Contact Us
                 </Link>
             </div>
             <!-- Mobile Menu -->
@@ -116,6 +119,7 @@ onMounted(async () => {
                 aria-label="Toggle Menu"
             >
                 <svg
+                    v-if="!isOpen"
                     class="h-6 w-6"
                     fill="none"
                     stroke="currentColor"
@@ -129,10 +133,25 @@ onMounted(async () => {
                         d="M4 6h16M4 12h16m-7 6h7"
                     ></path>
                 </svg>
+                <svg
+                    v-else
+                    class="h-6 w-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
+                    ></path>
+                </svg>
             </button>
         </div>
         <!-- Mobile Dropdown -->
-        <div v-if="isOpen" class="bg-blue-50 md:hidden">
+        <div v-if="isOpen" class="bg-blue-50 p-4 md:hidden">
             <Link
                 href="/"
                 class="block px-4 py-2 text-gray-700 hover:bg-gray-200"
@@ -163,12 +182,22 @@ onMounted(async () => {
             >
                 Blogs
             </Link>
-            <Link
-                href="/contact"
-                class="mt-2 w-full rounded bg-[#00133D] px-4 py-2 text-white hover:bg-gray-800"
-            >
-                Contact Us
-            </Link>
+            <div class="mt-4 flex justify-between">
+                <Link
+                    href="/contact"
+                    class="mt-2 rounded bg-[#00133D] px-4 py-2 text-white hover:bg-gray-800"
+                >
+                    Contact Us
+                </Link>
+
+                <Link href="/login" v-if="showAdminIcon">
+                    <img
+                        src="/icons/Admin.svg"
+                        alt=""
+                        class="h-12 w-12 cursor-pointer text-gray-800"
+                    />
+                </Link>
+            </div>
         </div>
     </nav>
 </template>

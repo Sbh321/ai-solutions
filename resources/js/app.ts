@@ -29,7 +29,7 @@ createInertiaApp({
 
         if (!localStorage.getItem(fingerprintKey)) {
             const client = new ClientJS();
-            const fingerprint = client?.getFingerprint();
+            const fingerprint = String(client?.getFingerprint());
 
             localStorage.setItem(fingerprintKey, fingerprint);
         }
