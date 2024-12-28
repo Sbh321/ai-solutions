@@ -11,7 +11,7 @@
             >
                 <div class="absolute inset-0 bg-white bg-opacity-60"></div>
                 <div
-                    class="absolute inset-0 flex flex-col items-center justify-center gap-14"
+                    class="absolute inset-0 mb-24 flex flex-col items-center justify-center gap-14"
                 >
                     <p
                         class="max-w-[800px] text-center text-6xl font-bold text-[#00133D]"

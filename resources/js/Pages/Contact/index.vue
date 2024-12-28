@@ -3,15 +3,15 @@
         <Head title="Contact" />
 
         <div class="container py-10">
-            <div class="md:flex">
-                <div class="flex w-1/2">
+            <div class="gap-12 md:flex">
+                <div class="flex md:w-1/2">
                     <img
                         src="/images/contact.png"
                         alt=""
-                        class="max-w-[500px] object-cover"
+                        class="w-full object-cover"
                     />
                 </div>
-                <div class="flex w-1/2">
+                <div class="flex md:w-1/2">
                     <div class="flex w-full justify-center">
                         <div class="w-full rounded-lg bg-white p-8 shadow-lg">
                             <h2 class="mb-4 text-2xl font-semibold">
@@ -121,15 +121,15 @@
         </div>
 
         <div class="container py-10">
-            <div class="md:flex">
-                <div class="flex h-[450px] w-1/2">
+            <div class="gap-12 md:flex">
+                <div class="mb-8 flex max-h-[450px] md:mb-0 md:w-1/2">
                     <img
                         src="/images/contact-2.png"
                         alt=""
-                        class="max-w-[500px] rounded-md object-cover"
+                        class="w-full rounded-md object-cover"
                     />
                 </div>
-                <div class="flex w-1/2 flex-col justify-center gap-12">
+                <div class="flex flex-col justify-center gap-12 md:w-1/2">
                     <div class="flex items-center gap-4">
                         <img src="/icons/phone.svg" alt="" class="h-12 w-12" />
                         <div>

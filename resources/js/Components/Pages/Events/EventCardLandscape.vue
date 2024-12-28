@@ -18,33 +18,32 @@ defineProps<{
 </script>
 
 <template>
-    <div class="flex items-center gap-8">
+    <div class="flex items-center gap-2 md:gap-8">
         <div>
             <p>{{ card.smallDate }}</p>
         </div>
         <div
-            class="flex flex-grow items-center gap-4 rounded-lg bg-[#F4F7FF] p-4 shadow-md"
+            class="flex flex-grow items-center gap-4 rounded-lg bg-[#F4F7FF] p-3 shadow-md md:gap-8 md:p-4"
         >
             <img
                 :src="card.image"
                 alt="Card image"
-                class="h-[290px] rounded-lg object-cover"
-                style="width: 290px"
+                class="h-[150px] w-[150px] rounded-lg object-cover md:h-[290px] md:w-[290px]"
             />
             <div class="flex-grow">
-                <p class="mt-8 text-lg font-semibold">
+                <p class="text-md font-semibold md:text-lg">
                     {{ card.title }}
                 </p>
 
-                <p class="mt-3 text-sm text-[#626262]">
+                <p class="mt-2 text-sm text-[#626262] md:mt-3">
                     {{ card.location }}
                 </p>
 
-                <p class="mt-3 text-sm text-[#626262]">
+                <p class="mt-2 text-sm text-[#626262] md:mt-3">
                     {{ card.date }}
                 </p>
 
-                <p class="mt-3 text-sm text-[#626262]">
+                <p class="mt-2 text-sm text-[#626262] md:mt-3">
                     {{ card.time }}
                 </p>
             </div>

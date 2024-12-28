@@ -4,7 +4,7 @@
             class="container mx-auto grid grid-cols-1 gap-8 px-4 md:grid-cols-4"
         >
             <!-- Logo Section -->
-            <div class="flex flex-col items-start">
+            <div class="flex items-center justify-center md:justify-start">
                 <img
                     src="/images/Logo.png"
                     alt="AI Solutions Logo"
@@ -13,7 +13,7 @@
             </div>
 
             <!-- Contacts Section -->
-            <div>
+            <div class="text-center md:text-left">
                 <h3 class="mb-2 text-lg font-semibold">Contacts</h3>
                 <p class="mb-2 text-[#C9C9C9]">Manchester, United Kingdom</p>
                 <p class="mb-2 text-[#C9C9C9]">+44 161 123 4567</p>
@@ -21,7 +21,7 @@
             </div>
 
             <!-- Menu Section -->
-            <div>
+            <div class="text-center md:text-left">
                 <h3 class="mb-2 text-lg font-semibold">Menu</h3>
                 <ul class="space-y-1">
                     <li class="text-[#C9C9C9]">
@@ -51,7 +51,7 @@
             </div>
 
             <!-- Contact Us Section -->
-            <div class="flex flex-col items-start">
+            <div class="text-center md:text-left">
                 <h3 class="mb-2 text-lg font-semibold">Contact Us</h3>
                 <p class="mb-4 text-[#C9C9C9]">Reach Out Today</p>
                 <Link

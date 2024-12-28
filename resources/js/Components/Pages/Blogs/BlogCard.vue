@@ -21,19 +21,19 @@ defineProps<{
         <img
             :src="card.image"
             alt="Card image"
-            class="h-[290px] w-full rounded-lg object-cover"
+            class="h-[200px] w-full rounded-lg object-cover md:h-[290px]"
         />
-        <p class="mt-8 text-lg font-semibold">
+        <p class="mt-4 text-lg font-semibold md:mt-8">
             <Link href="/blogs/1" class="cursor-pointer hover:underline">
                 {{ card.title }}
             </Link>
         </p>
 
-        <p class="mt-4 text-sm text-[#626262]">
+        <p class="mt-2 text-sm text-[#626262] md:mt-4">
             {{ card.subTitle }}
         </p>
 
-        <p class="mt-4 line-clamp-3 text-sm text-[#626262]">
+        <p class="mt-2 line-clamp-3 text-sm text-[#626262] md:mt-4">
             {{ card.description }}
         </p>
     </div>

@@ -14,7 +14,7 @@
 
                 <!-- Centered content -->
                 <div
-                    class="absolute inset-0 flex flex-col items-center justify-center gap-14"
+                    class="absolute inset-0 mb-24 flex flex-col items-center justify-center gap-14"
                 >
                     <p
                         class="max-w-[800px] text-center text-6xl font-bold text-[#00133D]"
@@ -28,7 +28,7 @@
         <div class="bg-[#F4F7FF]">
             <div class="container py-20">
                 <div class="items-center md:flex">
-                    <div class="w-1/2">
+                    <div class="md:w-1/2">
                         <p class="mb-8 text-4xl font-bold">
                             Innovating Workplaces, One Solution at a Time
                         </p>
@@ -52,7 +52,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="flex w-1/2 items-center justify-center">
+                    <div class="flex items-center justify-center md:w-1/2">
                         <img
                             src="/images/about.png"
                             alt=""
@@ -65,14 +65,14 @@
 
         <div class="container py-20">
             <div class="md:flex">
-                <div class="flex w-1/2 items-center justify-center">
+                <div class="flex items-center justify-center md:w-1/2">
                     <img
                         src="/images/about-2.png"
                         alt=""
                         class="max-w-[500px]"
                     />
                 </div>
-                <div class="flex w-1/2 items-center justify-center">
+                <div class="flex items-center justify-center md:w-1/2">
                     <ul class="list-inside list-disc text-[#626262]">
                         <li class="mb-4">
                             <span class="font-bold">Who We Are:</span>

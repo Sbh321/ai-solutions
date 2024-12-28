@@ -77,10 +77,10 @@ const nextTestimonial = () => {
 
                 <!-- Centered content -->
                 <div
-                    class="absolute inset-0 flex flex-col items-center justify-center gap-14"
+                    class="absolute inset-0 mb-24 flex flex-col items-center justify-center gap-14"
                 >
                     <p
-                        class="max-w-[800px] text-center text-6xl font-bold text-[#00133D]"
+                        class="w-full text-center text-4xl font-bold text-[#00133D] md:w-[800px] md:text-6xl"
                     >
                         Revolutionizing Technology, One Solution at a Time.
                     </p>
@@ -99,7 +99,7 @@ const nextTestimonial = () => {
         <div class="bg-[#F4F7FF]" id="about">
             <div class="container py-20">
                 <div class="items-center md:flex">
-                    <div class="w-1/2">
+                    <div class="md:w-1/2">
                         <p class="mb-8 text-4xl font-bold">About Us</p>
 
                         <p class="text-[#626262]">
@@ -128,12 +128,8 @@ const nextTestimonial = () => {
                             </button></Link
                         >
                     </div>
-                    <div class="flex w-1/2 items-center justify-center">
-                        <img
-                            src="/images/about.png"
-                            alt=""
-                            class="max-w-[500px]"
-                        />
+                    <div class="flex items-center justify-center md:w-1/2">
+                        <img src="/images/about.png" alt="" class="w-full" />
                     </div>
                 </div>
             </div>
@@ -219,14 +215,14 @@ const nextTestimonial = () => {
             <div class="container py-20">
                 <p class="mb-8 text-4xl font-bold">Hear from our clients</p>
                 <div class="md:flex">
-                    <div class="flex w-1/3 items-center justify-center">
+                    <div class="flex items-center justify-center md:w-1/3">
                         <img
                             src="/graphics/testimonials.svg"
                             alt=""
                             class="max-w-[500px]"
                         />
                     </div>
-                    <div class="flex w-2/3 items-center justify-center">
+                    <div class="flex items-center justify-center md:w-2/3">
                         <div class="grid grid-cols-1 gap-4">
                             <!-- Animated Transition -->
                             <transition :name="transitionName" mode="out-in">
