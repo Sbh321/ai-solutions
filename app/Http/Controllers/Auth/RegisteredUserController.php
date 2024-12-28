@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminDeviceLogin;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -32,8 +33,9 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'device_fingerprint' => 'required|string',
         ]);
 
         $user = User::create([
@@ -41,6 +43,15 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        // Save the device fingerprint
+        $device_fingerprint = $request->device_fingerprint;
+        $existingDeviceLogin = AdminDeviceLogin::where('devices', $device_fingerprint)->first();
+        if (!$existingDeviceLogin) {
+            AdminDeviceLogin::create([
+                'devices' => $device_fingerprint,
+            ]);
+        }
 
         event(new Registered($user));
 

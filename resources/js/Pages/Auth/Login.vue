@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import Checkbox from '@/Components/Checkbox.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import { onMounted } from 'vue';
 
 defineProps<{
     canResetPassword?: boolean;
@@ -16,6 +17,7 @@ const form = useForm({
     email: '',
     password: '',
     remember: false,
+    device_fingerprint: '',
 });
 
 const submit = () => {
@@ -25,6 +27,10 @@ const submit = () => {
         },
     });
 };
+
+onMounted(() => {
+    form.device_fingerprint = localStorage.getItem('device_fingerprint') || '';
+});
 </script>
 
 <template>

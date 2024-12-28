@@ -1,7 +1,8 @@
 import '../css/app.css';
 import './bootstrap';
 
-import { createInertiaApp } from '@inertiajs/vue3';
+import { createInertiaApp, router } from '@inertiajs/vue3';
+import { ClientJS } from 'clientjs';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, DefineComponent, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
@@ -16,6 +17,23 @@ createInertiaApp({
             import.meta.glob<DefineComponent>('./Pages/**/*.vue'),
         ),
     setup({ el, App, props, plugin }) {
+        // Prevent visiting the same page
+        router.on('before', (event) => {
+            if (window.location.pathname === event.detail.visit.url.pathname) {
+                event.preventDefault();
+            }
+        });
+
+        // Logic to generate and store device fingerprint
+        const fingerprintKey = 'device_fingerprint';
+
+        if (!localStorage.getItem(fingerprintKey)) {
+            const client = new ClientJS();
+            const fingerprint = client?.getFingerprint();
+
+            localStorage.setItem(fingerprintKey, fingerprint);
+        }
+
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)

@@ -1,10 +1,31 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import axios from 'axios';
+import { onMounted, ref } from 'vue';
+
+const showAdminIcon = ref<boolean>(false);
 
 // Use the `ref` to create a reactive state for `isOpen` with a boolean type
 const route: string = window.location.pathname; // Type `route` as a string
 const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
+
+onMounted(async () => {
+    const deviceFingerprint = localStorage.getItem('device_fingerprint');
+
+    if (deviceFingerprint) {
+        try {
+            const response = await axios.post('/checkAdmin', {
+                device_fingerprint: deviceFingerprint,
+            });
+
+            if (response.data.status === 200) {
+                showAdminIcon.value = true;
+            }
+        } catch (error) {
+            console.error('Error checking device fingerprint:', error);
+        }
+    }
+});
 </script>
 
 <template>
@@ -31,6 +52,7 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
                         'border-b-2 border-gray-900': route === '/',
                     }"
                 >
+                    <!-- $page.url -->
                     Home
                 </Link>
                 <Link
@@ -71,12 +93,20 @@ const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
                 </Link>
             </div>
             <!-- Contact Button -->
-            <div class="hidden py-2 md:block">
+            <div class="hidden items-center gap-4 py-2 md:flex">
                 <Link
                     href="/contact"
                     class="rounded-lg bg-[#00133D] px-4 py-2 text-white hover:bg-gray-800"
                 >
                     Contact Us
+                </Link>
+
+                <Link href="/login" v-if="showAdminIcon">
+                    <img
+                        src="/icons/Admin.svg"
+                        alt=""
+                        class="h-12 w-12 cursor-pointer"
+                    />
                 </Link>
             </div>
             <!-- Mobile Menu -->
