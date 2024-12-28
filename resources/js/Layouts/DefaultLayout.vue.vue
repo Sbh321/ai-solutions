@@ -4,11 +4,11 @@
         <main class="flex-grow">
             <slot />
         </main>
-        <div
+        <!-- <div
             class="chat-bot cursor-pointer rounded-full border-2 border-black bg-white p-4 shadow-lg"
         >
             <img src="/icons/Bot.svg" alt="Chat Bot" />
-        </div>
+        </div> -->
         <Footer />
     </div>
 </template>

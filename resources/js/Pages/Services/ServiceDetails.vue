@@ -93,7 +93,7 @@ const slides = [
     {
         title: 'Explore Opportunities',
         description:
-            'Unlock opportunities by harnessing the power of AI. Gain insights...',
+            'Discover the vast opportunities AI offers for businesses across various sectors. By utilizing AI, companies can analyze vast amounts of data to uncover trends, enhance customer experiences, and make data-driven decisions. AI opens up new avenues for growth, from automating repetitive tasks to predicting market shifts and improving operational efficiency. Embrace AI-driven innovation to stay ahead of competitors, optimize resources, and unlock new revenue streams, making your business more agile and future-ready.',
         image: '/images/temp/focus_2.png',
     },
 ];

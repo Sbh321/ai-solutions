@@ -130,7 +130,7 @@
                     />
                 </div>
                 <div class="flex w-1/2 flex-col justify-center gap-12">
-                    <div class="flex gap-4">
+                    <div class="flex items-center gap-4">
                         <img src="/icons/phone.svg" alt="" class="h-12 w-12" />
                         <div>
                             <p class="text-xl">+44 161 123 4567</p>
@@ -140,8 +140,12 @@
                         </div>
                     </div>
 
-                    <div class="flex gap-4">
-                        <img src="/icons/phone.svg" alt="" class="h-12 w-12" />
+                    <div class="flex items-center gap-4">
+                        <img
+                            src="/icons/location.svg"
+                            alt=""
+                            class="h-12 w-12"
+                        />
                         <div>
                             <p class="text-xl">Uk:</p>
                             <p class="text-[#626262]">
