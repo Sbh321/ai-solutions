@@ -39,6 +39,36 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Dashboard
                                 </NavLink>
+                                <NavLink
+                                    :href="route('services')"
+                                    :active="route().current('services')"
+                                >
+                                    Services
+                                </NavLink>
+                                <NavLink
+                                    :href="route('events')"
+                                    :active="route().current('events')"
+                                >
+                                    Events
+                                </NavLink>
+                                <NavLink
+                                    :href="route('blogs')"
+                                    :active="route().current('blogs')"
+                                >
+                                    Blogs
+                                </NavLink>
+                                <NavLink
+                                    :href="route('gallery')"
+                                    :active="route().current('gallery')"
+                                >
+                                    Gallery
+                                </NavLink>
+                                <NavLink
+                                    :href="route('settings')"
+                                    :active="route().current('settings')"
+                                >
+                                    Settings
+                                </NavLink>
                             </div>
                         </div>
 
@@ -76,15 +106,23 @@ const showingNavigationDropdown = ref(false);
                                         >
                                             Profile
                                         </DropdownLink>
+
+                                        <DropdownLink
+                                            :href="route('admin.list')"
+                                        >
+                                            Admin List
+                                        </DropdownLink>
+
+                                        <DropdownLink :href="route('register')">
+                                            Register Admin
+                                        </DropdownLink>
+
                                         <DropdownLink
                                             :href="route('logout')"
                                             method="post"
                                             as="button"
                                         >
                                             Log Out
-                                        </DropdownLink>
-                                        <DropdownLink :href="route('register')">
-                                            Register Admin
                                         </DropdownLink>
                                     </template>
                                 </Dropdown>
@@ -149,6 +187,36 @@ const showingNavigationDropdown = ref(false);
                         >
                             Dashboard
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('services')"
+                            :active="route().current('services')"
+                        >
+                            Services
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('events')"
+                            :active="route().current('events')"
+                        >
+                            Events
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('blogs')"
+                            :active="route().current('blogs')"
+                        >
+                            Blogs
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('gallery')"
+                            :active="route().current('gallery')"
+                        >
+                            Gallery
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('settings')"
+                            :active="route().current('settings')"
+                        >
+                            Settings
+                        </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
@@ -170,6 +238,15 @@ const showingNavigationDropdown = ref(false);
                             <ResponsiveNavLink :href="route('profile.edit')">
                                 Profile
                             </ResponsiveNavLink>
+
+                            <ResponsiveNavLink :href="route('admin.list')">
+                                Admin List
+                            </ResponsiveNavLink>
+
+                            <ResponsiveNavLink :href="route('register')">
+                                Register Admin
+                            </ResponsiveNavLink>
+
                             <ResponsiveNavLink
                                 :href="route('logout')"
                                 method="post"

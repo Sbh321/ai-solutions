@@ -70,8 +70,32 @@ Route::get('/contact', function () {
 })->name('about')->name('contact');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Admin/Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/services', function () {
+    return Inertia::render('Admin/Services/index');
+})->middleware(['auth', 'verified'])->name('services');
+
+Route::get('/events', function () {
+    return Inertia::render('Admin/Events/index');
+})->middleware(['auth', 'verified'])->name('events');
+
+Route::get('/blogs', function () {
+    return Inertia::render('Admin/Blogs/index');
+})->middleware(['auth', 'verified'])->name('blogs');
+
+Route::get('/gallery', function () {
+    return Inertia::render('Admin/Gallery/index');
+})->middleware(['auth', 'verified'])->name('gallery');
+
+Route::get('/settings', function () {
+    return Inertia::render('Admin/Settings/index');
+})->middleware(['auth', 'verified'])->name('settings');
+
+Route::get('/admin-list', function () {
+    return Inertia::render('Admin/Admins/index');
+})->middleware(['auth', 'verified'])->name('admin.list');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
