@@ -69,29 +69,31 @@ Route::get('/contact', function () {
     return Inertia::render('Contact/index');
 })->name('about')->name('contact');
 
+// Admin Routes
+
 Route::get('/dashboard', function () {
     return Inertia::render('Admin/Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/services', function () {
+Route::get('/admin/services', function () {
     return Inertia::render('Admin/Services/index');
-})->middleware(['auth', 'verified'])->name('services');
+})->middleware(['auth', 'verified'])->name('admin.services');
 
-Route::get('/events', function () {
+Route::get('/admin/events', function () {
     return Inertia::render('Admin/Events/index');
-})->middleware(['auth', 'verified'])->name('events');
+})->middleware(['auth', 'verified'])->name('admin.events');
 
-Route::get('/blogs', function () {
+Route::get('/admin/blogs', function () {
     return Inertia::render('Admin/Blogs/index');
-})->middleware(['auth', 'verified'])->name('blogs');
+})->middleware(['auth', 'verified'])->name('admin.blogs');
 
-Route::get('/gallery', function () {
+Route::get('/admin/gallery', function () {
     return Inertia::render('Admin/Gallery/index');
-})->middleware(['auth', 'verified'])->name('gallery');
+})->middleware(['auth', 'verified'])->name('admin.gallery');
 
-Route::get('/settings', function () {
+Route::get('/admin/settings', function () {
     return Inertia::render('Admin/Settings/index');
-})->middleware(['auth', 'verified'])->name('settings');
+})->middleware(['auth', 'verified'])->name('admin.settings');
 
 Route::get('/admin-list', function () {
     return Inertia::render('Admin/Admins/index');

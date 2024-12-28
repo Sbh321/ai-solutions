@@ -40,32 +40,32 @@ const showingNavigationDropdown = ref(false);
                                     Dashboard
                                 </NavLink>
                                 <NavLink
-                                    :href="route('services')"
-                                    :active="route().current('services')"
+                                    :href="route('admin.services')"
+                                    :active="route().current('admin.services')"
                                 >
                                     Services
                                 </NavLink>
                                 <NavLink
-                                    :href="route('events')"
-                                    :active="route().current('events')"
+                                    :href="route('admin.events')"
+                                    :active="route().current('admin.events')"
                                 >
                                     Events
                                 </NavLink>
                                 <NavLink
-                                    :href="route('blogs')"
-                                    :active="route().current('blogs')"
+                                    :href="route('admin.blogs')"
+                                    :active="route().current('admin.blogs')"
                                 >
                                     Blogs
                                 </NavLink>
                                 <NavLink
-                                    :href="route('gallery')"
-                                    :active="route().current('gallery')"
+                                    :href="route('admin.gallery')"
+                                    :active="route().current('admin.gallery')"
                                 >
                                     Gallery
                                 </NavLink>
                                 <NavLink
-                                    :href="route('settings')"
-                                    :active="route().current('settings')"
+                                    :href="route('admin.settings')"
+                                    :active="route().current('admin.settings')"
                                 >
                                     Settings
                                 </NavLink>
@@ -188,32 +188,32 @@ const showingNavigationDropdown = ref(false);
                             Dashboard
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            :href="route('services')"
-                            :active="route().current('services')"
+                            :href="route('admin.services')"
+                            :active="route().current('admin.services')"
                         >
                             Services
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            :href="route('events')"
-                            :active="route().current('events')"
+                            :href="route('admin.events')"
+                            :active="route().current('admin.events')"
                         >
                             Events
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            :href="route('blogs')"
-                            :active="route().current('blogs')"
+                            :href="route('admin.blogs')"
+                            :active="route().current('admin.blogs')"
                         >
                             Blogs
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            :href="route('gallery')"
-                            :active="route().current('gallery')"
+                            :href="route('admin.gallery')"
+                            :active="route().current('admin.gallery')"
                         >
                             Gallery
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
-                            :href="route('settings')"
-                            :active="route().current('settings')"
+                            :href="route('admin.settings')"
+                            :active="route().current('admin.settings')"
                         >
                             Settings
                         </ResponsiveNavLink>
