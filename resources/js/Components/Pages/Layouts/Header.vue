@@ -105,7 +105,7 @@ onMounted(async () => {
                     <img
                         src="/icons/Admin.svg"
                         alt=""
-                        class="h-12 w-12 cursor-pointer"
+                        class="h-12 w-12 cursor-pointer text-gray-800"
                     />
                 </Link>
             </div>
