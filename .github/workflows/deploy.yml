@@ -64,7 +64,7 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
-          rsync -avz -e "ssh -i private_key.pem" ./public/build/ user@your-server:/path/to/your/project/public/build/
+          rsync -avz -e "ssh -i private_key.pem" ./public/build/ subham@20.89.183.7:/path/to/your/project/public/build/
           rm -f private_key.pem
 
       # Step 10: SSH into Server and Run Deployment Commands
