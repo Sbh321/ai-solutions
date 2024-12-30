@@ -103,10 +103,88 @@
                 </div>
             </div>
         </div>
+
+        <div class="bg-[#F4F7FF]">
+            <div class="container py-10">
+                <p class="mb-8 text-4xl font-bold">Your Feedback</p>
+                <div class="gap-12 md:flex">
+                    <div class="flex md:w-1/2">
+                        <div class="flex w-full justify-start">
+                            <div
+                                class="max-w-[500px] rounded-lg bg-white p-12 text-center shadow-lg"
+                            >
+                                <h2 class="mb-4 text-2xl font-semibold">
+                                    We appreciate your feedback
+                                </h2>
+                                <p class="mb-4 text-sm text-gray-600">
+                                    We are always looking for ways to improve
+                                    your experience. Please take moment to
+                                    evaluate and tell us what you think about
+                                    your self.
+                                </p>
+
+                                <form @submit.prevent="handleSubmit">
+                                    <n-rate
+                                        color="#027fff"
+                                        :size="35"
+                                        class="mb-4"
+                                        v-model:value="form.rating"
+                                    />
+
+                                    <div>
+                                        <textarea
+                                            id="feedback"
+                                            v-model="form.feedback"
+                                            placeholder="Enter your feedback"
+                                            class="mt-1 block h-[200px] w-full rounded-md border-gray-300 p-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                        ></textarea>
+                                    </div>
+                                    <div class="mt-6">
+                                        <button
+                                            type="submit"
+                                            class="w-full rounded-md bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600"
+                                        >
+                                            SUBMIT
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex md:w-1/2">
+                        <img
+                            src="/images/feedback.png"
+                            alt=""
+                            class="h-[500px] object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
     </DefaultLayoutVue>
 </template>
 
 <script setup lang="ts">
 import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
 import { Head } from '@inertiajs/vue3';
+import { NRate } from 'naive-ui';
+import { reactive, watch } from 'vue';
+
+const handleSubmit = (): void => {
+    alert('Thank you for your feedback!');
+};
+
+interface Form {
+    rating: number;
+    feedback: string;
+}
+
+const form = reactive<Form>({
+    rating: 0,
+    feedback: '',
+});
+
+watch(form, (value) => {
+    console.log(value);
+});
 </script>
