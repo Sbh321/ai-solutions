@@ -1,0 +1,85 @@
+name: Continuous Deployment (CD) to Server
+
+on:
+  push:
+    branches:
+      - main # Or any branch to trigger deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up PHP (for Laravel)
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, bcmath, xml, zip, curl
+
+      # Step 3: Cache Composer dependencies
+      - name: Cache Composer Dependencies
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      # Step 4: Install Composer Dependencies
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      # Step 5: Set up Node.js (for Vue)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      # Step 6: Cache npm dependencies
+      - name: Cache NPM Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Step 7: Install npm dependencies
+      - name: Install NPM Dependencies
+        run: npm ci
+
+      # Step 8: Build Vue Application
+      - name: Build Vue Application
+        run: NODE_ENV=production npm run build
+
+      # Step 9: Deploy to Server using rsync
+      - name: Deploy Build Files to Server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
+          rsync -avz -e "ssh -i private_key.pem" ./public/build/ user@your-server:/path/to/your/project/public/build/
+          rm -f private_key.pem
+
+      # Step 10: SSH into Server and Run Deployment Commands
+      - name: Run Deployment Commands on Server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
+          ssh -i private_key.pem subham@20.89.183.7 << 'EOF'
+            cd /path/to/your/project
+            php artisan migrate --force
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            php artisan optimize
+          EOF
+          rm -f private_key.pem
