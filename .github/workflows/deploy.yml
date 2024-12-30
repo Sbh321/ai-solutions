@@ -81,7 +81,7 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
           ssh -i private_key.pem subham@20.89.183.7 << 'EOF'
-            cd /path/to/your/project
+            cd /var/www/html/ai-solutions
             php artisan migrate --force
             php artisan config:cache
             php artisan route:cache
