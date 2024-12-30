@@ -64,6 +64,9 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
+
+          ssh-keyscan -H 20.89.183.7 >> ~/.ssh/known_hosts
+
           rsync -avz -e "ssh -i private_key.pem" ./public/build/ subham@20.89.183.7:/path/to/your/project/public/build/
           rm -f private_key.pem
 
