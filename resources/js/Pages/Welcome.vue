@@ -83,7 +83,6 @@ const nextTestimonial = () => {
                         class="w-full text-center text-4xl font-bold text-[#00133D] md:w-[800px] md:text-6xl"
                     >
                         Revolutionizing Technology, One Solution at a Time.
-                        Chanes
                     </p>
                     <a href="#about">
                         <button
