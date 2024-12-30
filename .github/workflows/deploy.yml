@@ -65,11 +65,12 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
 
-
           mkdir -p ~/.ssh
           ssh-keyscan -H 20.89.183.7 >> ~/.ssh/known_hosts
 
-          rsync -avz -e "ssh -i private_key.pem" ./public/build/ subham@20.89.183.7:/path/to/your/project/public/build/
+          ssh -i private_key.pem subham@20.89.183.7 'mkdir -p /var/www/html/ai-solutions/public/build/'
+
+          rsync -avz -e "ssh -i private_key.pem" ./public/build/ subham@20.89.183.7:/var/www/html/ai-solutions/public/build/
           rm -f private_key.pem
 
       # Step 10: SSH into Server and Run Deployment Commands
