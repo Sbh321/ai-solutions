@@ -6,14 +6,23 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Models\AdminDeviceLogin;
+use App\Models\Blog;
+use App\Models\Event;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
+    $services = Service::latest()->take(3)->get();
+
+    $events = Event::latest()->take(3)->get();
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
+        'services' => $services,
+        'events' => $events,
     ]);
 })->name('welcome');
 
@@ -46,26 +55,44 @@ Route::get('/about', function () {
 })->name('about')->name('about');
 
 Route::get('/services', function () {
-    return Inertia::render('Services/index');
+    $services = Service::all();
+
+    return Inertia::render('Services/index', [
+        'services' => $services,
+    ]);
 })->name('about')->name('services');
 
 Route::get('/services/{id}', function ($id) {
+    $service = Service::findOrFail($id);
+
     return Inertia::render('Services/ServiceDetails', [
-        'id' => $id,
+        'service' => $service,
     ]);
 })->name('services.details');
 
 Route::get('/events', function () {
-    return Inertia::render('Events/index');
-})->name('about')->name('events');
+    $events = Event::all();
+
+    return Inertia::render('Events/index', [
+        'events' => $events,
+    ]);
+})->name('about')->name('events'
+);
 
 Route::get('/blogs', function () {
-    return Inertia::render('Blogs/index');
+    $blogs = Blog::all();
+
+    return Inertia::render('Blogs/index',
+        [
+            'blogs' => $blogs,
+        ]);
 })->name('about')->name('blogs');
 
 Route::get('/blogs/{id}', function ($id) {
+    $blog = Blog::findOrFail($id);
+
     return Inertia::render('Blogs/BlogDetails', [
-        'id' => $id,
+        'blog' => $blog,
     ]);
 })->name('blogs.details');
 

@@ -3,34 +3,13 @@
         <Head title="Service Details" />
 
         <div class="container py-20">
-            <p class="mb-8 text-4xl font-bold">AI driven Software Solutions</p>
-
-            <p class="text-[#626262]">
-                Our AI-driven software solutions are designed to revolutionize
-                workplace efficiency and innovation. By leveraging cutting-edge
-                artificial intelligence, we help businesses automate repetitive
-                tasks, analyze complex data, and enhance employee productivity.
-                These solutions are tailored to meet specific industry needs,
-                enabling faster problem-solving, smarter decision-making, and
-                seamless digital transformation. Empower your organization with
-                intelligent tools that drive results and support a
-                forward-thinking approach to workplace challenges.
+            <p class="mb-8 text-4xl font-bold">
+                {{ service.title }}
             </p>
 
-            <br />
-
-            <p class="text-[#626262]">Key Features and Benefits:</p>
-            <ul class="mb-4 list-inside list-disc text-[#626262]">
-                <li>
-                    Proactively solving workplace challenges to enhance
-                    productivity and satisfaction.
-                </li>
-
-                <li>
-                    AI-powered virtual assistants for real-time support and
-                    affordable prototyping solutions.
-                </li>
-            </ul>
+            <p class="text-[#626262]">
+                {{ service.description }}
+            </p>
         </div>
 
         <div class="container py-10">
@@ -73,7 +52,7 @@
     </DefaultLayoutVue>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
 import { Head } from '@inertiajs/vue3';
 
@@ -97,6 +76,13 @@ const slides = [
         image: '/images/temp/focus_2.png',
     },
 ];
+
+interface Service {
+    title: string;
+    description: string;
+}
+
+defineProps<{ service: Service }>();
 
 const modules = [Navigation, Pagination];
 </script>

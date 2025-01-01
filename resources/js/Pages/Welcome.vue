@@ -6,16 +6,26 @@ import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
-// Define the types for the props
 interface Props {
     canLogin: boolean;
     canRegister: boolean;
+    services: {
+        id: number;
+        title: string;
+        image: string;
+    }[];
+    events: {
+        id: number;
+        title: string;
+        image: string;
+        location: string;
+        start_date: string;
+        start_time: string;
+    }[];
 }
 
-// Define props using `defineProps` and type it with the `Props` interface
 defineProps<Props>();
 
-// Testimonials data
 interface Testimonial {
     feedback: string;
     name: string;
@@ -141,20 +151,7 @@ const nextTestimonial = () => {
 
             <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
                 <FocusCard
-                    v-for="card in [
-                        {
-                            title: 'AI-Driven Software Solutions ',
-                            image: '/images/temp/focus_1.png',
-                        },
-                        {
-                            title: 'AI-Powered Virtual Assistants',
-                            image: '/images/temp/focus_2.png',
-                        },
-                        {
-                            title: 'Digital Employee Experience',
-                            image: '/images/temp/focus_3.png',
-                        },
-                    ]"
+                    v-for="card in services"
                     :card="card"
                     :key="card.title"
                 />
@@ -170,29 +167,7 @@ const nextTestimonial = () => {
 
             <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
                 <EventCard
-                    v-for="card in [
-                        {
-                            title: 'AI-Driven Software Solutions ',
-                            image: '/images/temp/event_1.png',
-                            location: 'Sunderland',
-                            date: '12th August 2021',
-                            time: '10:00 AM',
-                        },
-                        {
-                            title: 'AI-Powered Virtual Assistants',
-                            image: '/images/temp/event_2.png',
-                            location: 'Sunderland',
-                            date: '12th August 2021',
-                            time: '10:00 AM',
-                        },
-                        {
-                            title: 'Digital Employee Experience',
-                            image: '/images/temp/event_3.png',
-                            location: 'Sunderland',
-                            date: '12th August 2021',
-                            time: '10:00 AM',
-                        },
-                    ]"
+                    v-for="card in events"
                     :card="card"
                     :key="card.title"
                 />

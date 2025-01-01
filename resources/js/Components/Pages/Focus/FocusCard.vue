@@ -2,27 +2,35 @@
 import { Link } from '@inertiajs/vue3';
 import { defineProps } from 'vue';
 
-// Define the type for the `card` prop
 interface Card {
+    id: number;
     image: string;
+
     title: string;
 }
 
-// Define props with the appropriate types
 defineProps<{
     card: Card;
 }>();
+
+function getImageUrl(imagePath: string): string {
+    if (!imagePath) return '';
+    return `${import.meta.env.VITE_APP_URL}/storage/${imagePath}`;
+}
 </script>
 
 <template>
     <div>
         <img
-            :src="card.image"
+            :src="getImageUrl(card.image)"
             alt=""
             class="h-[260px] w-full rounded-lg object-cover"
         />
         <p class="mt-8 text-center text-lg font-semibold">
-            <Link href="/services/1" class="cursor-pointer hover:underline">
+            <Link
+                :href="`/services/${card.id}`"
+                class="cursor-pointer hover:underline"
+            >
                 {{ card.title }}
             </Link>
         </p>

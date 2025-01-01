@@ -30,32 +30,7 @@
 
             <div class="mx-auto grid max-w-[800px] grid-cols-1 gap-8">
                 <EventCardLandscape
-                    v-for="card in [
-                        {
-                            title: 'AI-Driven Software Solutions ',
-                            image: '/images/temp/event_1.png',
-                            location: 'Sunderland',
-                            date: '12th August 2021',
-                            smallDate: 'Aug, 12',
-                            time: '10:00 AM',
-                        },
-                        {
-                            title: 'AI-Powered Virtual Assistants',
-                            image: '/images/temp/event_2.png',
-                            location: 'Sunderland',
-                            date: '12th August 2021',
-                            smallDate: 'Aug, 12',
-                            time: '10:00 AM',
-                        },
-                        {
-                            title: 'Digital Employee Experience',
-                            image: '/images/temp/event_3.png',
-                            location: 'Sunderland',
-                            date: '12th August 2021',
-                            smallDate: 'Aug, 12',
-                            time: '10:00 AM',
-                        },
-                    ]"
+                    v-for="card in events"
                     :card="card"
                     :key="card.title"
                 />
@@ -68,4 +43,15 @@
 import EventCardLandscape from '@/Components/Pages/Events/EventCardLandscape.vue';
 import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
 import { Head } from '@inertiajs/vue3';
+
+interface Events {
+    id: number;
+    image: string;
+    title: string;
+    location: string;
+    start_date: string;
+    start_time: string;
+}
+
+defineProps<{ events: Events[] }>();
 </script>

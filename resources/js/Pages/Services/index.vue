@@ -27,7 +27,7 @@
 
             <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
                 <FocusCard
-                    v-for="card in focusCards"
+                    v-for="card in services"
                     :card="card"
                     :key="card.title"
                 />
@@ -90,32 +90,13 @@ import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
 import { Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
-const focusCards = [
-    {
-        title: 'AI-Driven Software Solutions',
-        image: '/images/temp/focus_1.png',
-    },
-    {
-        title: 'AI-Powered Virtual Assistants',
-        image: '/images/temp/focus_2.png',
-    },
-    {
-        title: 'Digital Employee Experience',
-        image: '/images/temp/focus_3.png',
-    },
-    {
-        title: 'Innovative AI Solutions',
-        image: '/images/temp/focus_4.png',
-    },
-    {
-        title: 'AI-Driven Insights',
-        image: '/images/temp/focus_5.png',
-    },
-    {
-        title: 'Smart AI Tools',
-        image: '/images/temp/focus_6.png',
-    },
-];
+interface Services {
+    id: number;
+    title: string;
+    image: string;
+}
+
+defineProps<{ services: Services[] }>();
 
 interface Testimonial {
     feedback: string;

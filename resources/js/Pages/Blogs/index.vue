@@ -32,7 +32,7 @@
                 class="grid grid-cols-1 gap-4 px-4 md:grid-cols-2 lg:grid-cols-3"
             >
                 <BlogCard
-                    v-for="card in blogCards"
+                    v-for="card in blogs"
                     :card="card"
                     :key="card.title"
                 />
@@ -137,29 +137,14 @@ import BlogCard from '@/Components/Pages/Blogs/BlogCard.vue';
 import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
 import { Head } from '@inertiajs/vue3';
 
-const blogCards = [
-    {
-        image: '/images/temp/event_1.png',
-        title: 'AI at Workplace',
-        subTitle: 'How AI is transforming employee experiences?',
-        description:
-            'Artificial Intelligence (AI) is fundamentally changing how employees interact with their workplaces, creating environments that are smarter, more adaptive, and highly efficient. AI-driven tools now play a pivotal role in automating routine tasks, freeing employees to focus on strategic and creative aspects of their jobs. Intelligent virtual assistants provide personalized support, helping with scheduling, task prioritization, and knowledge retrieval, thereby reducing cognitive load and improving overall productivity. Furthermore, AI-powered analytics uncover insights into employee behavior, enabling leaders to create tailored wellness programs, optimize workflows, and improve engagement. As organizations continue to embrace AI, the traditional office is evolving into a space that prioritizes innovation, satisfaction, and growth.',
-    },
-    {
-        image: '/images/temp/event_2.png',
-        title: 'Prototyping with AI',
-        subTitle: 'How AI is transforming employee experiences?',
-        description:
-            'The integration of Artificial Intelligence in prototyping is revolutionizing the way ideas are developed and tested. AI algorithms accelerate the prototyping phase by analyzing requirements, generating design variations, and simulating real-world applications. This ensures that teams can test feasibility and refine concepts rapidly, reducing time-to-market and costs. Moreover, AI tools can predict user interactions, allowing for the creation of prototypes that are more intuitive and aligned with user expectations. By using machine learning to identify potential flaws early, businesses can make informed adjustments, enhancing the quality and success rate of their projects. AI not only speeds up the prototyping process but also fosters innovation, paving the way for groundbreaking solutions.',
-    },
-    {
-        image: '/images/temp/event_3.png',
-        title: 'AI Trends and Innovations',
-        subTitle: 'How AI is transforming employee experiences?',
-        description:
-            'The rapid advancements in Artificial Intelligence have given rise to groundbreaking trends and innovations that are reshaping industries and redefining possibilities. From generative AI models like GPT and DALL-E to breakthroughs in neural networks, AI is expanding its influence across domains such as healthcare, education, and workplace management. Companies are leveraging AI to analyze massive datasets, identify patterns, and make predictions that were previously unimaginable. Innovations such as AI-driven chatbots, automated decision-making systems, and intelligent robots are becoming integral to modern business strategies. These trends not only improve efficiency but also open doors to creative problem-solving and entirely new industries. Staying updated on these developments is crucial for organizations aiming to remain competitive in a rapidly evolving digital landscape.',
-    },
-];
+interface Blogs {
+    id: number;
+    image: string;
+    title: string;
+    description: string;
+}
+
+defineProps<{ blogs: Blogs[] }>();
 
 const images = [
     { src: '/images/gallery/one.png', alt: 'Image 1' },
