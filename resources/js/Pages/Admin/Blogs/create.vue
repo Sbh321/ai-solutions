@@ -1,12 +1,12 @@
 <template>
-    <Head title="Create Service" />
+    <Head title="Create Blog" />
 
     <AuthenticatedLayout>
         <template #header>
             <h2
                 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200"
             >
-                Create Service
+                Create Blog
             </h2>
         </template>
 
@@ -161,13 +161,13 @@ import { Head, router } from '@inertiajs/vue3';
 import axios from 'axios';
 import { ref } from 'vue';
 
-interface ServiceForm {
+interface BlogForm {
     title: string;
     description: string;
     image: File | null;
 }
 
-const form = ref<ServiceForm>({
+const form = ref<BlogForm>({
     title: '',
     description: '',
     image: null,
@@ -221,13 +221,13 @@ function submitForm() {
     }
 
     axios
-        .post('/admin/services', formData, {
+        .post('/admin/blogs', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
         })
         .then(() => {
-            router.visit('/admin/services');
+            router.visit('/admin/blogs');
         })
         .catch((error) => {
             console.error(error);
@@ -235,6 +235,6 @@ function submitForm() {
 }
 
 function cancel() {
-    router.visit('/admin/services');
+    router.visit('/admin/blogs');
 }
 </script>

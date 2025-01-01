@@ -1,12 +1,12 @@
 <template>
-    <Head title="Create Service" />
+    <Head title="Edit Blog" />
 
     <AuthenticatedLayout>
         <template #header>
             <h2
                 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200"
             >
-                Create Service
+                Edit Blog
             </h2>
         </template>
 
@@ -102,6 +102,7 @@
                                                     </p>
                                                 </div>
                                             </div>
+
                                             <!-- Preview Section -->
                                             <div
                                                 v-if="imagePreview"
@@ -119,6 +120,7 @@
                                                 />
                                             </div>
                                         </div>
+
                                         <p
                                             v-if="errorMessage"
                                             class="text-sm text-red-600"
@@ -143,7 +145,7 @@
                                     type="submit"
                                     class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 >
-                                    Save
+                                    Save Changes
                                 </button>
                             </div>
                         </form>
@@ -159,22 +161,36 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { PhotoIcon } from '@heroicons/vue/24/solid';
 import { Head, router } from '@inertiajs/vue3';
 import axios from 'axios';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
-interface ServiceForm {
+interface BlogForm {
+    id: number;
     title: string;
     description: string;
     image: File | null;
 }
 
-const form = ref<ServiceForm>({
-    title: '',
-    description: '',
+const { blog } = defineProps<{ blog: BlogForm }>();
+
+const form = ref<BlogForm>({
+    id: blog?.id || 0,
+    title: blog?.title || '',
+    description: blog?.description || '',
     image: null,
 });
 
-const imagePreview = ref<string | null>(null);
+const imagePreview = ref<string | null>(
+    blog?.image
+        ? `${import.meta.env.VITE_APP_URL}/storage/${blog.image}`
+        : null,
+);
 const errorMessage = ref<string | null>(null);
+
+onMounted(() => {
+    if (blog?.image) {
+        imagePreview.value = `${import.meta.env.VITE_APP_URL}/storage/${blog.image}`;
+    }
+});
 
 function handleFileUpload(event: Event) {
     const file = (event.target as HTMLInputElement)?.files?.[0];
@@ -221,13 +237,13 @@ function submitForm() {
     }
 
     axios
-        .post('/admin/services', formData, {
+        .post(`/admin/blogs/${form.value.id}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
         })
         .then(() => {
-            router.visit('/admin/services');
+            router.visit('/admin/blogs');
         })
         .catch((error) => {
             console.error(error);
@@ -235,6 +251,6 @@ function submitForm() {
 }
 
 function cancel() {
-    router.visit('/admin/services');
+    router.visit('/admin/blogs');
 }
 </script>

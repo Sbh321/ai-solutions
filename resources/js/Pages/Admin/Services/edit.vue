@@ -160,6 +160,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { PhotoIcon } from '@heroicons/vue/24/solid';
 import { router } from '@inertiajs/vue3';
+import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
 interface ServiceForm {
@@ -235,15 +236,18 @@ function submitForm() {
         formData.append('image', form.value.image);
     }
 
-    try {
-        router.post(`/admin/services/${service.id}`, formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
+    axios
+        .post(`/admin/services/${form.value.id}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+        .then(() => {
+            router.visit('/admin/services');
+        })
+        .catch((error) => {
+            console.error(error);
         });
-        router.visit('/admin/services');
-    } catch (error) {
-        console.error('Error updating service:', error);
-        alert('Failed to update service.');
-    }
 }
 
 function cancel() {

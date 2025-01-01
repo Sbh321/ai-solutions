@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -95,9 +96,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/admin/events/{id}', [EventController::class, 'destroy'])->name('admin.events.destroy');
 });
 
-Route::get('/admin/blogs', function () {
-    return Inertia::render('Admin/Blogs/index');
-})->middleware(['auth', 'verified'])->name('admin.blogs');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin/blogs', [BlogController::class, 'index'])->name('admin.blogs');
+    Route::get('/admin/blogs/create', [BlogController::class, 'create'])->name('admin.blogs.create');
+    Route::post('/admin/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
+    Route::get('/admin/blogs/{id}/edit', [BlogController::class, 'edit'])->name('admin.blogs.edit');
+    Route::post('/admin/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blogs.update');
+    Route::delete('/admin/blogs/{id}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
+});
 
 Route::get('/admin/gallery', function () {
     return Inertia::render('Admin/Gallery/index');

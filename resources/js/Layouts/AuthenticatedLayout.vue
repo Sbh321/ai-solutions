@@ -57,12 +57,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Blogs
                                 </NavLink>
-                                <NavLink
+                                <!-- <NavLink
                                     :href="route('admin.gallery')"
                                     :active="route().current('admin.gallery')"
                                 >
                                     Gallery
-                                </NavLink>
+                                </NavLink> -->
                                 <NavLink
                                     :href="route('admin.settings')"
                                     :active="route().current('admin.settings')"
@@ -205,12 +205,12 @@ const showingNavigationDropdown = ref(false);
                         >
                             Blogs
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink
+                        <!-- <ResponsiveNavLink
                             :href="route('admin.gallery')"
                             :active="route().current('admin.gallery')"
                         >
                             Gallery
-                        </ResponsiveNavLink>
+                        </ResponsiveNavLink> -->
                         <ResponsiveNavLink
                             :href="route('admin.settings')"
                             :active="route().current('admin.settings')"
