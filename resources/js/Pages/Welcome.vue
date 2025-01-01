@@ -22,32 +22,13 @@ interface Props {
         start_date: string;
         start_time: string;
     }[];
+    testimonials: {
+        feedback: string;
+        name: string;
+    }[];
 }
 
-defineProps<Props>();
-
-interface Testimonial {
-    feedback: string;
-    name: string;
-}
-
-const testimonials: Testimonial[] = [
-    {
-        feedback:
-            'AI-Solutions has been a game-changer for our business. Their AI-driven software solutions have helped us streamline our operations and improve our customer service.',
-        name: 'John Doe',
-    },
-    {
-        feedback:
-            'AI-Solutions has exceeded our expectations. Their innovative AI tools have significantly boosted our efficiency.',
-        name: 'Jane Smith',
-    },
-    {
-        feedback:
-            'The team at AI-Solutions is outstanding. Their AI solutions have transformed how we operate daily.',
-        name: 'Michael Johnson',
-    },
-];
+const { testimonials } = defineProps<Props>();
 
 // Currently active testimonial index
 const activeIndex = ref<number>(0);

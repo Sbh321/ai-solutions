@@ -7,7 +7,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Models\AdminDeviceLogin;
 use App\Models\Blog;
+use App\Models\Contact;
 use App\Models\Event;
+use App\Models\Feedback;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,14 +17,15 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     $services = Service::latest()->take(3)->get();
-
     $events = Event::latest()->take(3)->get();
+    $feedbacks = Feedback::latest()->take(5)->get();
 
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'services' => $services,
         'events' => $events,
+        'testimonials' => $feedbacks,
     ]);
 })->name('welcome');
 
@@ -56,9 +59,11 @@ Route::get('/about', function () {
 
 Route::get('/services', function () {
     $services = Service::all();
+    $feedbacks = Feedback::latest()->take(5)->get();
 
     return Inertia::render('Services/index', [
         'services' => $services,
+        'testimonials' => $feedbacks,
     ]);
 })->name('about')->name('services');
 
@@ -100,11 +105,65 @@ Route::get('/contact', function () {
     return Inertia::render('Contact/index');
 })->name('about')->name('contact');
 
-// Admin Routes
+Route::post('/contact', function (Request $request) {
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'phone' => 'nullable|string|max:20',
+        'email' => 'required|email|max:255',
+        'company' => 'nullable|string|max:255',
+        'country' => 'nullable|string|max:255',
+        'subject' => 'required|string|max:255',
+        'description' => 'required|string',
+    ]);
 
+    Contact::create([
+        'name' => $validated['name'],
+        'phone' => $validated['phone'],
+        'email' => $validated['email'],
+        'company' => $validated['company'],
+        'country' => $validated['country'],
+        'subject' => $validated['subject'],
+        'description' => $validated['description'],
+    ]);
+
+    return response()->json([
+        'message' => 'Contact form submitted successfully.',
+    ], 201);
+})->name('contact.store');
+
+Route::post('/feedback', function (Request $request) {
+    $validated = $request->validate([
+        'name' => 'required|string',
+        'feedback' => 'required|string',
+        'rating' => 'required|integer',
+    ]);
+
+    Feedback::create([
+        'rating' => $validated['rating'],
+        'feedback' => $validated['feedback'],
+        'name' => $validated['name'],
+    ]);
+
+    return response()->json([
+        'message' => 'Feedback submitted successfully.',
+    ], 201);
+})->name('feedback.store');
+
+// Admin Routes
 Route::get('/dashboard', function () {
     return Inertia::render('Admin/Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/admin/inbox', function () {
+    $contacts = Contact::latest()->get();
+    $feedbacks = Feedback::latest()->get();
+
+    return Inertia::render('Admin/Inbox/index',
+        [
+            'contacts' => $contacts,
+            'feedbacks' => $feedbacks,
+        ]);
+})->middleware(['auth', 'verified'])->name('admin.inbox');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/services', [ServiceController::class, 'index'])->name('admin.services');

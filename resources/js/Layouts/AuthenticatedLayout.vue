@@ -57,6 +57,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Blogs
                                 </NavLink>
+                                <NavLink
+                                    :href="route('admin.inbox')"
+                                    :active="route().current('admin.inbox')"
+                                >
+                                    Inbox
+                                </NavLink>
                                 <!-- <NavLink
                                     :href="route('admin.gallery')"
                                     :active="route().current('admin.gallery')"
@@ -204,6 +210,12 @@ const showingNavigationDropdown = ref(false);
                             :active="route().current('admin.blogs')"
                         >
                             Blogs
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('admin.inbox')"
+                            :active="route().current('admin.inbox')"
+                        >
+                            Inbox
                         </ResponsiveNavLink>
                         <!-- <ResponsiveNavLink
                             :href="route('admin.gallery')"

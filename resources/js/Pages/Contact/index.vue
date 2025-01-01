@@ -71,6 +71,38 @@
                                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                         />
                                     </div>
+                                    <!-- Company Name -->
+                                    <div>
+                                        <label
+                                            class="block text-sm font-medium text-[#626262]"
+                                            for="company"
+                                        >
+                                            Company Name
+                                        </label>
+                                        <input
+                                            id="company"
+                                            v-model="form.company"
+                                            type="text"
+                                            placeholder="Enter Company Name"
+                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                        />
+                                    </div>
+                                    <!-- Country Name -->
+                                    <div>
+                                        <label
+                                            class="block text-sm font-medium text-[#626262]"
+                                            for="country"
+                                        >
+                                            Country Name
+                                        </label>
+                                        <input
+                                            id="country"
+                                            v-model="form.country"
+                                            type="text"
+                                            placeholder="Enter Country Name"
+                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                        />
+                                    </div>
                                     <!-- Subject -->
                                     <div>
                                         <label
@@ -161,18 +193,39 @@
 
 <script setup lang="ts">
 import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
+import axios from 'axios';
 import { reactive } from 'vue';
 
 const form = reactive({
     name: '',
     phone: '',
     email: '',
+    company: '',
+    country: '',
     subject: '',
     description: '',
 });
 
-const handleSubmit = () => {
-    console.log(form);
+// Handle form submission
+const handleSubmit = async () => {
+    try {
+        const response = await axios.post('/contact', form);
+
+        if (response.status === 201) {
+            alert('Form submitted successfully');
+            form.name = '';
+            form.phone = '';
+            form.email = '';
+            form.company = '';
+            form.country = '';
+            form.subject = '';
+            form.description = '';
+            window.scrollTo(0, 0);
+            router.reload();
+        }
+    } catch (error: any) {
+        console.error('Error submitting form:', error.response.data);
+    }
 };
 </script>

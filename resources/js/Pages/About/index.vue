@@ -132,17 +132,38 @@
                                     />
 
                                     <div>
+                                        <input
+                                            type="text"
+                                            v-model="form.name"
+                                            placeholder="Enter your name"
+                                            class="mt-1 block w-full rounded-md border-gray-300 p-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                        />
+                                    </div>
+
+                                    <div>
                                         <textarea
                                             id="feedback"
                                             v-model="form.feedback"
                                             placeholder="Enter your feedback"
-                                            class="mt-1 block h-[200px] w-full rounded-md border-gray-300 p-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                            class="mt-4 block h-[200px] w-full rounded-md border-gray-300 p-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                         ></textarea>
                                     </div>
                                     <div class="mt-6">
                                         <button
                                             type="submit"
-                                            class="w-full rounded-md bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600"
+                                            :disabled="
+                                                !form.rating ||
+                                                !form.feedback ||
+                                                !form.name
+                                            "
+                                            :class="
+                                                !form.rating ||
+                                                !form.feedback ||
+                                                !form.name
+                                                    ? 'cursor-not-allowed opacity-50'
+                                                    : 'cursor-pointer hover:bg-blue-600'
+                                            "
+                                            class="w-full rounded-md bg-blue-500 px-4 py-2 font-medium text-white"
                                         >
                                             SUBMIT
                                         </button>
@@ -167,24 +188,39 @@
 <script setup lang="ts">
 import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
 import { Head } from '@inertiajs/vue3';
+import axios from 'axios';
 import { NRate } from 'naive-ui';
-import { reactive, watch } from 'vue';
+import { reactive } from 'vue';
 
-const handleSubmit = (): void => {
-    alert('Thank you for your feedback!');
+const handleSubmit = async (): Promise<void> => {
+    try {
+        const response = await axios.post('/feedback', {
+            rating: form.rating,
+            feedback: form.feedback,
+            name: form.name,
+        });
+
+        if (response.status === 201) {
+            form.rating = 0;
+            form.feedback = '';
+            form.name = '';
+            window.scrollTo(0, 0);
+            alert('Feedback submitted successfully');
+        }
+    } catch (error) {
+        console.error('Unexpected error:', error);
+    }
 };
 
 interface Form {
     rating: number;
     feedback: string;
+    name: string;
 }
 
 const form = reactive<Form>({
     rating: 0,
     feedback: '',
-});
-
-watch(form, (value) => {
-    console.log(value);
+    name: '',
 });
 </script>
