@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
@@ -113,9 +114,10 @@ Route::get('/admin/settings', function () {
     return Inertia::render('Admin/Settings/index');
 })->middleware(['auth', 'verified'])->name('admin.settings');
 
-Route::get('/admin-list', function () {
-    return Inertia::render('Admin/Admins/index');
-})->middleware(['auth', 'verified'])->name('admin.list');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin-list', [AdminController::class, 'index'])->name('admin.list');
+    Route::delete('/admin-delete/{id}', [AdminController::class, 'destroy'])->name('admin.user.delete');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

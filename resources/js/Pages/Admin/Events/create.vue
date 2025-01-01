@@ -253,12 +253,10 @@ function submitForm() {
             },
         })
         .then((response) => {
-            alert('Event created successfully!');
             router.visit('/admin/events');
         })
         .catch((error) => {
             console.error('Error creating event:', error);
-            alert('Failed to create event.');
         });
 }
 
