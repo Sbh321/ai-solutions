@@ -215,15 +215,13 @@ watch(
 );
 
 const imagePreview = ref<string | null>(
-    event?.image
-        ? `${import.meta.env.VITE_APP_URL}/storage/${event.image}`
-        : null,
+    event?.image ? `/storage/${event.image}` : null,
 );
 const errorMessage = ref<string | null>(null);
 
 onMounted(() => {
     if (event?.image) {
-        imagePreview.value = `${import.meta.env.VITE_APP_URL}/storage/${event.image}`;
+        imagePreview.value = `/storage/${event.image}`;
     }
 });
 

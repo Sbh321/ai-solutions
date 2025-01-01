@@ -17,7 +17,7 @@ defineProps<{
 
 function getImageUrl(imagePath: string): string {
     if (!imagePath) return '';
-    return `${import.meta.env.VITE_APP_URL}/storage/${imagePath}`;
+    return `/storage/${imagePath}`;
 }
 
 const formatDate = (date: string) => {

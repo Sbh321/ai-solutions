@@ -180,9 +180,7 @@ const form = ref<ServiceForm>({
 });
 
 const imagePreview = ref<string | null>(
-    service?.image
-        ? `${import.meta.env.VITE_APP_URL}/storage/${service.image}`
-        : null,
+    service?.image ? `/storage/${service.image}` : null,
 );
 const errorMessage = ref<string | null>(null);
 

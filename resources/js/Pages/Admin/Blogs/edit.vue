@@ -180,15 +180,13 @@ const form = ref<BlogForm>({
 });
 
 const imagePreview = ref<string | null>(
-    blog?.image
-        ? `${import.meta.env.VITE_APP_URL}/storage/${blog.image}`
-        : null,
+    blog?.image ? `/storage/${blog.image}` : null,
 );
 const errorMessage = ref<string | null>(null);
 
 onMounted(() => {
     if (blog?.image) {
-        imagePreview.value = `${import.meta.env.VITE_APP_URL}/storage/${blog.image}`;
+        imagePreview.value = `/storage/${blog.image}`;
     }
 });
 

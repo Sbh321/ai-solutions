@@ -35,9 +35,7 @@ const saveSettings = () => {
 };
 
 const imagePreview = ref<string | null>(
-    websiteLogo.value
-        ? `${import.meta.env.VITE_APP_URL}/storage/${websiteLogo.value}`
-        : null,
+    websiteLogo.value ? `/storage/${websiteLogo.value}` : null,
 );
 const errorMessage = ref<string | null>(null);
 
@@ -84,7 +82,7 @@ onMounted(() => {
             websiteLogo.value = setting.website_logo;
         })
         .then(() => {
-            imagePreview.value = `${import.meta.env.VITE_APP_URL}/storage/${websiteLogo.value}`;
+            imagePreview.value = `/storage/${websiteLogo.value}`;
             websiteLogo.value = null;
         });
 });
