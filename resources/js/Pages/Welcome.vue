@@ -210,7 +210,6 @@ const nextTestimonial = () => {
         </div>
 
         <!-- Testimonials from the client -->
-
         <div class="bg-[#F4F7FF]">
             <div class="container py-20">
                 <p class="mb-8 text-4xl font-bold">Hear from our clients</p>
@@ -225,7 +224,11 @@ const nextTestimonial = () => {
                     <div class="flex items-center justify-center md:w-2/3">
                         <div class="grid grid-cols-1 gap-4">
                             <!-- Animated Transition -->
-                            <transition :name="transitionName" mode="out-in">
+                            <transition
+                                :name="transitionName"
+                                mode="out-in"
+                                class="w-full"
+                            >
                                 <!-- Display the active testimonial -->
                                 <TestimonialsCard
                                     :card="testimonials[activeIndex]"
