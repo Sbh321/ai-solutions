@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
 use App\Models\AdminDeviceLogin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -75,13 +77,23 @@ Route::get('/dashboard', function () {
     return Inertia::render('Admin/Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/admin/services', function () {
-    return Inertia::render('Admin/Services/index');
-})->middleware(['auth', 'verified'])->name('admin.services');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin/services', [ServiceController::class, 'index'])->name('admin.services');
+    Route::get('/admin/services/create', [ServiceController::class, 'create'])->name('admin.services.create');
+    Route::post('/admin/services', [ServiceController::class, 'store'])->name('admin.services.store');
+    Route::get('/admin/services/{id}/edit', [ServiceController::class, 'edit'])->name('admin.services.edit');
+    Route::post('/admin/services/{service}', [ServiceController::class, 'update'])->name('admin.services.update');
+    Route::delete('/admin/services/{id}', [ServiceController::class, 'destroy'])->name('admin.services.destroy');
+});
 
-Route::get('/admin/events', function () {
-    return Inertia::render('Admin/Events/index');
-})->middleware(['auth', 'verified'])->name('admin.events');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/admin/events', [EventController::class, 'index'])->name('admin.events');
+    Route::get('/admin/events/create', [EventController::class, 'create'])->name('admin.events.create');
+    Route::post('/admin/events', [EventController::class, 'store'])->name('admin.events.store');
+    Route::get('/admin/events/{id}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
+    Route::post('/admin/events/{event}', [EventController::class, 'update'])->name('admin.events.update');
+    Route::delete('/admin/events/{id}', [EventController::class, 'destroy'])->name('admin.events.destroy');
+});
 
 Route::get('/admin/blogs', function () {
     return Inertia::render('Admin/Blogs/index');
