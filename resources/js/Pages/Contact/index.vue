@@ -165,7 +165,9 @@
                     <div class="flex items-center gap-4">
                         <img src="/icons/phone.svg" alt="" class="h-12 w-12" />
                         <div>
-                            <p class="text-xl">+44 161 123 4567</p>
+                            <p class="text-xl">
+                                {{ setting.phone_number }}
+                            </p>
                             <p class="text-[#626262]">
                                 Reach out to us at the numbers provided above.
                             </p>
@@ -181,7 +183,7 @@
                         <div>
                             <p class="text-xl">Uk:</p>
                             <p class="text-[#626262]">
-                                Manchester, United Kingdom
+                                {{ setting.location }}
                             </p>
                         </div>
                     </div>
@@ -196,6 +198,15 @@ import DefaultLayoutVue from '@/Layouts/DefaultLayout.vue.vue';
 import { Head, router } from '@inertiajs/vue3';
 import axios from 'axios';
 import { reactive } from 'vue';
+
+interface Website {
+    website_logo: string;
+    location: string;
+    email: string;
+    phone_number: string;
+}
+
+defineProps<{ setting: Website }>();
 
 const form = reactive({
     name: '',

@@ -5,12 +5,14 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SettingController;
 use App\Models\AdminDeviceLogin;
 use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\Event;
 use App\Models\Feedback;
 use App\Models\Service;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -102,7 +104,12 @@ Route::get('/blogs/{id}', function ($id) {
 })->name('blogs.details');
 
 Route::get('/contact', function () {
-    return Inertia::render('Contact/index');
+    $setting = Setting::first();
+
+    return Inertia::render('Contact/index',
+        [
+            'setting' => $setting,
+        ]);
 })->name('about')->name('contact');
 
 Route::post('/contact', function (Request $request) {
@@ -197,8 +204,18 @@ Route::get('/admin/gallery', function () {
 })->middleware(['auth', 'verified'])->name('admin.gallery');
 
 Route::get('/admin/settings', function () {
-    return Inertia::render('Admin/Settings/index');
+    $setting = Setting::first();
+
+    return Inertia::render('Admin/Settings/index', [
+        'setting' => $setting,
+    ]);
 })->middleware(['auth', 'verified'])->name('admin.settings');
+
+Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/admin/settings', [SettingController::class, 'update'])->name('settings.update');
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin-list', [AdminController::class, 'index'])->name('admin.list');

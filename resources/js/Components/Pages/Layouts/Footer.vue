@@ -6,7 +6,7 @@
             <!-- Logo Section -->
             <div class="flex items-center justify-center md:justify-start">
                 <img
-                    src="/images/Logo.png"
+                    :src="getImageUrl(websiteInfo.website_logo)"
                     alt="AI Solutions Logo"
                     class="mb-4 h-auto w-40"
                 />
@@ -15,9 +15,15 @@
             <!-- Contacts Section -->
             <div class="text-center md:text-left">
                 <h3 class="mb-2 text-lg font-semibold">Contacts</h3>
-                <p class="mb-2 text-[#C9C9C9]">Manchester, United Kingdom</p>
-                <p class="mb-2 text-[#C9C9C9]">+44 161 123 4567</p>
-                <p class="mb-2 text-[#C9C9C9]">aisolutions123@gmail.com</p>
+                <p class="mb-2 text-[#C9C9C9]">
+                    {{ websiteInfo.location }}
+                </p>
+                <p class="mb-2 text-[#C9C9C9]">
+                    {{ websiteInfo.email }}
+                </p>
+                <p class="mb-2 text-[#C9C9C9]">
+                    {{ websiteInfo.phone_number }}
+                </p>
             </div>
 
             <!-- Menu Section -->
@@ -72,4 +78,25 @@
 
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
+import axios from 'axios';
+import { onMounted, ref } from 'vue';
+
+const websiteInfo = ref({
+    website_logo: '',
+    location: '',
+    email: '',
+    phone_number: '',
+});
+
+onMounted(() => {
+    axios.get('/settings').then((response) => {
+        websiteInfo.value = response.data.setting;
+        console.log(websiteInfo.value);
+    });
+});
+
+function getImageUrl(imagePath: string): string {
+    if (!imagePath) return '';
+    return `${import.meta.env.VITE_APP_URL}/storage/${imagePath}`;
+}
 </script>

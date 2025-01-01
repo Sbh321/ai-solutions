@@ -9,6 +9,13 @@ const showAdminIcon = ref<boolean>(false);
 const route: string = window.location.pathname; // Type `route` as a string
 const isOpen = ref<boolean>(false); // Specify that `isOpen` is a boolean
 
+const websiteInfo = ref({
+    website_logo: '',
+    location: '',
+    email: '',
+    phone_number: '',
+});
+
 onMounted(async () => {
     const deviceFingerprint = localStorage.getItem('device_fingerprint');
 
@@ -25,7 +32,17 @@ onMounted(async () => {
             console.error('Error checking device fingerprint:', error);
         }
     }
+
+    axios.get('/settings').then((response) => {
+        websiteInfo.value = response.data.setting;
+        console.log(websiteInfo.value);
+    });
 });
+
+function getImageUrl(imagePath: string): string {
+    if (!imagePath) return '';
+    return `${import.meta.env.VITE_APP_URL}/storage/${imagePath}`;
+}
 </script>
 
 <template>
@@ -36,12 +53,13 @@ onMounted(async () => {
         >
             <!-- Logo -->
             <div class="flex flex-col items-center py-2">
-                <Link href="/"
-                    ><img
-                        src="/images/Logo.png"
+                <Link href="/">
+                    <img
+                        :src="getImageUrl(websiteInfo.website_logo)"
                         alt="AI Solutions Logo"
                         class="h-14"
-                /></Link>
+                    />
+                </Link>
             </div>
             <!-- Links -->
             <div class="hidden h-16 items-center space-x-4 md:flex">
